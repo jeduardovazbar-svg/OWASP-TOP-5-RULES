@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Supervivencia: OWASP Top 5</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        /* 1. Ajustamos el contenedor padre (intro) */
+        .intro {
+            display: flex;
+            flex-direction: row;        /* Los pone uno al lado del otro */
+            justify-content: space-between; /* Empuja el texto a la izquierda y la imagen a la derecha */
+            align-items: center;        /* Centra ambos verticalmente */
+            
+            background: #fff;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* 2. Ajustamos la clase .fuego */
+        .fuego {
+            border-left: 150px solid #27ae60; /* ¡Agregamos 'solid'! Sin esto, el borde no aparece */
+            border-radius: 8px;
+            max-width: 150px; /* Asegura que la imagen no sea gigante */
+        }
+
+        /* 3. Ajustamos el contenedor del texto para que no ocupe todo el espacio si quieres espacio a la derecha */
+        .titular {
+            width: 60%; /* Ajusta el ancho para dar espacio a la imagen */
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h3 {
+            color: #27ae60;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .prevention-box {
+            background-color: #e8f8f5;
+            border: 1px solid #d1f2eb;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .friend-note {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            display: block;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>¡Oye! Vamos a pasar ese examen</h1>
+    <p>Guía rápida de los puntos 1 al 5 de OWASP según el anuncio de Vidal</p>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+</header>
+
+<div class="intro">
+    <div class="titular"><p>Oye, el profe Vidal Zuazo Ortiz fue súper claro: <strong>enfócate en la prevención</strong>. Aquí te resumo los primeros 5 puntos como si te los estuviera contando en la cafetería.</p></div>
+    <div class="titular"><img  class="fuego" src="fuego.jpg" alt="fuego de ben 10"></div>
+</div>
+
+<!-- A01 -->
+<div class="card">
+    <h2>1. Broken Access Control (A01)</h2>
+    <span class="friend-note">Ocurre cuando los usuarios pueden acceder a partes de la web o datos que no deberían ver (por ejemplo, entrar al panel de administrador sin permiso)</span>
+    <span class="friend-note">"Básicamente, cuando alguien entra a donde no lo invitaron."</span>
+    <div class="prevention-box">
+        <h3>¿Cómo lo prevenimos?</h3>
+        <ul>
+            <li><strong>Denegar por defecto:</strong> Si no tiene permiso explícito, no entra.</li>
+            <li><strong>Mínimo privilegio:</strong> Solo dale a cada usuario el poder que realmente necesita para trabajar.</li>
+            <li><strong>Cerrar sesiones:</strong> Asegúrate de que las sesiones mueran cuando el usuario se va.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- A02 -->
+<div class="card">
+    <h2>2. Security Misconfiguration (A02)</h2>
+    <span class="friend-note">Errores al configurar el servidor o la app, como dejar contraseñas por defecto o mantener funciones innecesarias activadas.</span>
+    <span class="friend-note">"Es como dejar la llave puesta en la puerta por flojera."</span>
+    <div class="prevention-box">
+        <h3>¿Cómo lo prevenimos?</h3>
+        <ul>
+            <li><strong>Quitar lo que sobra:</strong> Desinstala funciones, páginas y muestras que no uses.</li>
+            <li><strong>Cambiar contraseñas:</strong> ¡Nunca dejes 'admin/admin'!</li>
+            <li><strong>Automatizar:</strong> Usa procesos repetibles para configurar todo igual de seguro siempre.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- A03 -->
+<div class="card">
+    <h2>3. Software Supply Chain Failures (A03)</h2>
+    <span class="friend-note">Vulnerabilidades que vienen de usar librerías, plugins o componentes de terceros que no son seguros.</span>
+    <span class="friend-note">"Cuidado con lo que descargas de internet para tu código."</span>
+    <div class="prevention-box">
+        <h3>¿Cómo lo prevenimos?</h3>
+        <ul>
+            <li><strong>Verificar fuentes:</strong> Solo usa librerías y plugins conocidos y confiables.</li>
+            <li><strong>Escanear todo:</strong> Usa herramientas que revisen si tus dependencias tienen virus o fallos.</li>
+            <li><strong>Firmas digitales:</strong> Asegúrate de que el código que bajas sea exactamente el que el autor subió.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- A04 -->
+<div class="card">
+    <h2>4. Cryptographic Failures (A04)</h2>
+    <span class="friend-note">Problemas con la protección de datos sensibles (como contraseñas o tarjetas de crédito) debido a un cifrado débil o inexistente.</span>
+    <span class="friend-note">"Si guardas secretos, guárdalos bien bajo llave."</span>
+    <div class="prevention-box">
+        <h3>¿Cómo lo prevenimos?</h3>
+        <ul>
+            <li><strong>No inventes tu propio cifrado:</strong> Usa estándares como AES o protocolos como TLS 1.3.</li>
+            <li><strong>Cifra todo lo sensible:</strong> Datos en reposo (discos) y en tránsito (red).</li>
+            <li><strong>Salting:</strong> Siempre añade un 'sal' a las contraseñas antes de guardarlas.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- A05 -->
+<div class="card">
+    <h2>5. Injection (A05)</h2>
+    <span class="friend-note">Cuando la aplicación acepta datos dañinos de un usuario (como código malicioso en un formulario) y los ejecuta por error (ej. Inyección SQL).</span>
+    <span class="friend-note">"No dejes que el usuario te diga qué hacer con tu base de datos."</span>
+    <div class="prevention-box">
+        <h3>¿Cómo lo prevenimos?</h3>
+        <ul>
+            <li><strong>Consultas preparadas (Parametrización):</strong> Es la regla de oro contra SQL Injection.</li>
+            <li><strong>Validar entradas:</strong> Solo acepta lo que esperas (si pides un número, que sea un número).</li>
+            <li><strong>Limpiar datos:</strong> Escapa caracteres especiales para que el navegador no los ejecute como código.</li>
+        </ul>
+    </div>
+</div>
+<a href="https://www.flaticon.es/iconos-gratis/buscar" title="buscar iconos">Buscar iconos creados por Freepik - Flaticon</a>
+<footer>
+    <p>Un solo rayo de luz puede auyentar muchas sombras | ¡Mucho éxito en el examen!</p>
+</footer>
+
+</body>
+</html>
